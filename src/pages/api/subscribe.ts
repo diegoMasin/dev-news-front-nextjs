@@ -4,9 +4,8 @@ import { stripe } from "../../services/stripe";
 
 export default async function (req: NextApiRequest, res: NextApiResponse) {
   if (req.method === "POST") {
-    const session = await getSession({
-      req,
-    });
+    const session = await getSession({ req });
+
     const stripeCustomer = await stripe.customers.create({
       email: session.user.email,
       // metadata
