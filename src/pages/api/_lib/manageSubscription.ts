@@ -14,7 +14,6 @@ export async function saveSubscription(
       q.Get(q.Match(q.Index("user_by_stripe_customer_id"), customerId))
     )
   );
-  console.log("Passei aqui 2");
 
   const subscription = await stripe.subscriptions.retrieve(subscriptionId);
 
@@ -26,7 +25,6 @@ export async function saveSubscription(
     price_id: subscription.items.data[0].price.id,
   };
 
-  console.log("Passei aqui 3");
   await fauna.query(
     q.Create(q.Collection("subscriptions"), { data: subscriptionData })
   );

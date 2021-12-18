@@ -44,7 +44,6 @@ export default async function (req: NextApiRequest, res: NextApiResponse) {
       try {
         switch (type) {
           case "checkout.session.completed":
-            console.log("Passei aqui 1");
             const checkoutSession = event.data
               .object as Stripe.Checkout.Session;
             await saveSubscription(
