@@ -1,4 +1,4 @@
-import { GetStaticProps } from "next";
+import { GetStaticPaths, GetStaticProps } from "next";
 import { getSession, useSession } from "next-auth/react";
 import Head from "next/head";
 import Link from "next/link";
@@ -56,10 +56,13 @@ export default function PostPreview({ post }: PostPreviewProps) {
   );
 }
 
-export const getStaticPaths = () => {
+export const getStaticPaths: GetStaticPaths = () => {
   return {
-    paths: [],
-    fallback: "blocking",
+    paths: [
+      // Generation an specific posts for example. And others only after, in client's access
+      // {params: {slug: 'a-guide-to-flexbox-properties-in-react-native'}}
+    ],
+    fallback: "blocking", // true, false or blocking
   };
 };
 
@@ -87,5 +90,6 @@ export const getStaticProps: GetStaticProps = async ({ params }) => {
     props: {
       post,
     },
+    redirect: 60 * 30, // 30 minutes
   };
 };
