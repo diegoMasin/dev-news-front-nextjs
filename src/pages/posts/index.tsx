@@ -1,4 +1,8 @@
+import { GetStaticProps } from "next";
 import Head from "next/head";
+import { getPrismicClient } from "../../services/prismic";
+import Prismic from "@prismicio/client";
+
 import styles from "./styles.module.scss";
 
 export default function Posts() {
@@ -14,8 +18,8 @@ export default function Posts() {
             <strong>A guide to Flexbox properties in React Native</strong>
             <p>
               If you have a web design and/or development background, you may be
-              familiar with Flexbox. It's an opt-in CSS tool that enables you to
-              build layouts based on columns and rows.
+              familiar with Flexbox. It is an opt-in CSS tool that enables you
+              to build layouts based on columns and rows.
             </p>
           </a>
           <a href="#">
@@ -23,8 +27,8 @@ export default function Posts() {
             <strong>A guide to Flexbox properties in React Native</strong>
             <p>
               If you have a web design and/or development background, you may be
-              familiar with Flexbox. It's an opt-in CSS tool that enables you to
-              build layouts based on columns and rows.
+              familiar with Flexbox. It is an opt-in CSS tool that enables you
+              to build layouts based on columns and rows.
             </p>
           </a>
           <a href="#">
@@ -32,8 +36,8 @@ export default function Posts() {
             <strong>A guide to Flexbox properties in React Native</strong>
             <p>
               If you have a web design and/or development background, you may be
-              familiar with Flexbox. It's an opt-in CSS tool that enables you to
-              build layouts based on columns and rows.
+              familiar with Flexbox. It is an opt-in CSS tool that enables you
+              to build layouts based on columns and rows.
             </p>
           </a>
         </div>
@@ -41,3 +45,22 @@ export default function Posts() {
     </>
   );
 }
+
+// Building a static page and update each 60 min. This Consumes less internet.
+export const getStaticProps: GetStaticProps = async () => {
+  const prismic = getPrismicClient();
+
+  const response = await prismic.query(
+    [Prismic.predicates.at("document.type", "publication")],
+    {
+      fetch: ["publication.title", "publication.content"],
+      pageSize: 100,
+    }
+  );
+
+  console.log(JSON.stringify(response), null, 2);
+
+  return {
+    props: {},
+  };
+};
