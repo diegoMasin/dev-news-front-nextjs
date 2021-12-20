@@ -104,7 +104,7 @@ For now in a local environment, use any code, generate one here: https://djecret
 Create account. Create Custom Types (UID, Title, Content with Rich Text). Set type Repeatable and name as "Post".
 Create some documents on side menu Documents.
 
-###### PRISMIC_ENDPOINT=https://devnewslocal.prismic.io/api/v2
+###### PRISMIC_ENDPOINT=
 
 ```
 Go to Settings > Api & Security > copy "entry point for your api access"
