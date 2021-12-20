@@ -28,12 +28,11 @@ yarn build
 yarn start
 ```
 
-**Flowchart this project**
 ![Alt text](https://github.com/diegoMasin/dev-news-front-nextjs/blob/main/public/images/FlowchartDevNews.png)<br>
 
 ### How to configure .env
 
-**Stripe**
+**Stripe** -
 Create account in: stripe.com > register all your information, account name,...
 
 ###### STRIPE_API_KEY=
@@ -51,10 +50,10 @@ Click: developers > API Keys > Copy public key
 ###### STRIPE_WEBHOOK_SECRET=
 
 ```
-Click: developers > Webhooks > Test in local enviroment > follow steps for install CLI > Copy Key in your SO's Terminal
+Click: developers > Webhooks > Test in local enviroment > <br> follow steps for install CLI > Copy Key in your SO's Terminal
 ```
 
-**GitHub**
+**GitHub** -
 On your Github, go to settings and click: Developer settings > OAuth Apps > New OAuth App
 Save all registers.
 
@@ -67,10 +66,10 @@ Take Client ID
 ###### GITHUB_SECRET_ID=
 
 ```
-Generate Client secrets and Copy Client ID. Be careful, if you lose the secret, you'll have to create another one.
+Generate Client secrets and Copy Client ID.<br> Be careful, if you lose the secret, you'll have to create another one.
 ```
 
-**FaunaDB**
+**FaunaDB** -
 Create account on FaunaDB. Create Database. Create collections: users (email, stripe_customer_id) and subscriptions (id, userId, status, priceId). Create Indexes:
 
 - subscription_by_id: data.id
@@ -93,7 +92,7 @@ Go to Side Menu: Security > New Key > Copy Secret e paste here
 For now in a local environment, use any code, generate one here: https://djecrety.ir/
 ```
 
-**Primic CMS**
+**Primic CMS** -
 Create account. Create Custom Types (UID, Title, Content with Rich Text). Set type Repeatable and name as "Post".
 Create some documents on side menu Documents.
 
