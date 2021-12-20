@@ -16,6 +16,12 @@ yarn
 yarn dev
 ```
 
+**Run Project's Tests**
+
+```
+yarn test
+```
+
 **Build Project**
 
 ```
