@@ -56,7 +56,8 @@ Click: developers > API Keys > Copy public key
 ###### STRIPE_WEBHOOK_SECRET=
 
 ```
-Click: developers > Webhooks > Test in local enviroment > <br> follow steps for install CLI > Copy Key in your SO's Terminal
+Click: developers > Webhooks > Test in local enviroment >
+> follow steps for install CLI > Copy Key in your SO's Terminal
 ```
 
 **GitHub** -
@@ -72,7 +73,8 @@ Take Client ID
 ###### GITHUB_SECRET_ID=
 
 ```
-Generate Client secrets and Copy Client ID.<br> Be careful, if you lose the secret, you'll have to create another one.
+Generate Client secrets and Copy Client ID.
+Be careful, if you lose the secret, you'll have to create another one.
 ```
 
 **FaunaDB** -
