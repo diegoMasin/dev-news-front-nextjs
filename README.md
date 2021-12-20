@@ -1,34 +1,110 @@
-This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
+![Alt text](https://github.com/diegoMasin/maximumtech/blob/master/assets/img/logo-colorida.png)<br>
 
-## Getting Started
+# DevNews in Nextjs with OAuth Github + FaunaDB + Stripe + Prismic
 
-First, run the development server:
+###### This training is a news project that will be consuming some public apis including a subscription payments api.
 
-```bash
-npm run dev
-# or
+**Install Project**
+
+```
+yarn
+```
+
+**Run Project Local**
+
+```
 yarn dev
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+**Build Project**
 
-You can start editing the page by modifying `pages/index.js`. The page auto-updates as you edit the file.
+```
+yarn build
+```
 
-[API routes](https://nextjs.org/docs/api-routes/introduction) can be accessed on [http://localhost:3000/api/hello](http://localhost:3000/api/hello). This endpoint can be edited in `pages/api/hello.js`.
+**Run Project Production**
 
-The `pages/api` directory is mapped to `/api/*`. Files in this directory are treated as [API routes](https://nextjs.org/docs/api-routes/introduction) instead of React pages.
+```
+yarn start
+```
 
-## Learn More
+**Flowchart this project**
+![Alt text](https://github.com/diegoMasin/dev-news-front-nextjs/blob/main/public/images/FlowchartDevNews.png)<br>
 
-To learn more about Next.js, take a look at the following resources:
+### How to configure .env
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+**Stripe**
+Create account in: stripe.com > register all your information, account name,...
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js/) - your feedback and contributions are welcome!
+###### STRIPE_API_KEY=
 
-## Deploy on Vercel
+```
+Click: developers > API Keys > Reveal test key
+```
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+###### NEXT_PUBLIC_STRIPE_PUBLIC_KEY=
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/deployment) for more details.
+```
+Click: developers > API Keys > Copy public key
+```
+
+###### STRIPE_WEBHOOK_SECRET=
+
+```
+Click: developers > Webhooks > Test in local enviroment > follow steps for install CLI > Copy Key in your SO's Terminal
+```
+
+**GitHub**
+On your Github, go to settings and click: Developer settings > OAuth Apps > New OAuth App
+Save all registers.
+
+###### GITHUB_CLIENT_ID=
+
+```
+Take Client ID
+```
+
+###### GITHUB_SECRET_ID=
+
+```
+Generate Client secrets and Copy Client ID. Be careful, if you lose the secret, you'll have to create another one.
+```
+
+**FaunaDB**
+Create account on FaunaDB. Create Database. Create collections: users (email, stripe_customer_id) and subscriptions (id, userId, status, priceId). Create Indexes:
+
+- subscription_by_id: data.id
+- subscription_by_status: data.status
+- subscription_by_user_ref: data.userId
+- user_by_email: data.email
+- user_by_stripe_customer_id: data.stripe_customer_id
+
+###### FAUNADB_KEY=
+
+```
+Go to Side Menu: Security > New Key > Copy Secret e paste here
+```
+
+**NextAuth**
+
+###### NEXTAUTH_SECRET=
+
+```
+For now in a local environment, use any code, generate one here: https://djecrety.ir/
+```
+
+**Primic CMS**
+Create account. Create Custom Types (UID, Title, Content with Rich Text). Set type Repeatable and name as "Post".
+Create some documents on side menu Documents.
+
+###### PRISMIC_ENDPOINT=https://devnewslocal.prismic.io/api/v2
+
+```
+Go to Settings > Api & Security > copy "entry point for your api access"
+```
+
+###### PRISMIC_ACCESS_TOKEN=
+
+```
+Go to Settings > Generate and copy a permanent master access tokens
+```
