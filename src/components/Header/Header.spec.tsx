@@ -14,12 +14,12 @@ jest.mock("next/router", () => {
 jest.mock("next-auth/react", () => {
   return {
     useSession() {
-      return [null, false];
+      return { data: null, status: "loading" };
     },
   };
 });
 
-describe("ActiveLink component", () => {
+describe("Header component", () => {
   it("renders correctly", () => {
     render(<Header />);
 
