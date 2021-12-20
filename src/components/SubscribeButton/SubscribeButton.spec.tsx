@@ -9,7 +9,10 @@ jest.mock("next/router");
 
 describe("SubscribeButton component", () => {
   it("renders correctly", () => {
-    const useSessionMocked = mocked(useSession);
+    const useSessionMocked = jest.spyOn(
+      require("next-auth/react"),
+      "useSession"
+    );
     useSessionMocked.mockReturnValueOnce({
       data: null,
       status: "unauthenticated",
@@ -20,12 +23,15 @@ describe("SubscribeButton component", () => {
   });
 
   it("redirects user to sign when not authenticated", () => {
-    const useSessionMocked = mocked(useSession);
+    const useSessionMocked = jest.spyOn(
+      require("next-auth/react"),
+      "useSession"
+    );
     useSessionMocked.mockReturnValueOnce({
       data: null,
       status: "unauthenticated",
     });
-    const signInMocked = mocked(signIn);
+    const signInMocked = jest.spyOn(require("next-auth/react"), "signIn");
     render(<SubscribeButton />);
 
     const subscribeButton = screen.getByText("Subscribe now");
@@ -35,8 +41,11 @@ describe("SubscribeButton component", () => {
   });
 
   it("redirects to posts when user already has a subscription", () => {
-    const useRouterMocked = mocked(useRouter);
-    const useSessionMocked = mocked(useSession);
+    const useRouterMocked = jest.spyOn(require("next/router"), "useRouter");
+    const useSessionMocked = jest.spyOn(
+      require("next-auth/react"),
+      "useSession"
+    );
     const pushMock = jest.fn();
 
     useSessionMocked.mockReturnValueOnce({

@@ -1,14 +1,14 @@
 import { render, screen } from "@testing-library/react";
-import { mocked } from "ts-jest/utils";
-import { useSession } from "next-auth/react";
 import { SignInButton } from ".";
 
 jest.mock("next-auth/react");
 
 describe("SignButton component", () => {
   it("renders correctly when user is not authenticated", () => {
-    // TODO Improve this mocked because look like to be deprecated. (lib: ts-jest)
-    const useSessionMocked = mocked(useSession);
+    const useSessionMocked = jest.spyOn(
+      require("next-auth/react"),
+      "useSession"
+    );
     useSessionMocked.mockReturnValueOnce({
       data: null,
       status: "unauthenticated",
@@ -20,7 +20,10 @@ describe("SignButton component", () => {
   });
 
   it("renders correctly when user is authenticated", () => {
-    const useSessionMocked = mocked(useSession);
+    const useSessionMocked = jest.spyOn(
+      require("next-auth/react"),
+      "useSession"
+    );
     useSessionMocked.mockReturnValueOnce({
       data: {
         user: { name: "Diego Masin", email: "diegoifce@gmail.com" },
