@@ -13,8 +13,8 @@ export function Header() {
           src="/images/logo.svg"
           alt="dev.news"
           layout="fixed"
-          width={100}
-          height={100}
+          width={110}
+          height={31}
         />
         <nav>
           <ActiveLink activeClassName={styles.active} href="/">
