@@ -4,6 +4,12 @@
 
 ###### This training is a news project that will be consuming some public apis including a subscription payments api.
 
+**Published Project**
+
+```
+https://dev-news-front-nextjs.vercel.app/
+```
+
 **Install Project**
 
 ```
