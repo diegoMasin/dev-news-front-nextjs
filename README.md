@@ -8,6 +8,8 @@
 
 ```
 https://dev-news-front-nextjs.vercel.app/
+On Subscription use the card number: 4242 4242 4242 4242
+Any expiration date and any security code
 ```
 
 **Install Project**
